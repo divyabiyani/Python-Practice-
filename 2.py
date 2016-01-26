@@ -1,6 +1,5 @@
-a=input('Enter first no.')
-b=input('Enter second no.')
+a=input('Enter a no.')
 
-c=int(a)+int(b)
+c=float(a) ** 0.5
 
-print(c)
+print('The square root of %0.3f is %0.3f'%(float(a),c))
