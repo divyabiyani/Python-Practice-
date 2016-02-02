@@ -4,21 +4,10 @@ def main():
 	pname=str(input('Please choose your choice from rock,paper,scissor,lizard and spock:'))
 	try:
 		pno=rank(pname)
-	except Exception as e:
-		print('Error : {0}'.format(e))
-	cno=random.randint(0,4)
-	
-	try:
+		cno=random.randint(0,4)
 		cname=name(cno)
-	except Exception as e:
-		print('Error : {0}'.format(e))
-	
-	try:
 		print('Players choice= {0} \nComputers choice= {1}'.format(pno,cno))
 		print('Players choice= {0} \nComputers choice= {1}'.format(pname,cname))
-	except Exception as e:
-		print('Error : {0}'.format(e))
-	try:
 		ans=result(pno,cno)
 		if ans==1:
 			print('Player Wins!!')
