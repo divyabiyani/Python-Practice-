@@ -38,16 +38,16 @@ def print_encrypted_word(word_choosen):
 	return list('*'*len(word_choosen))
 
 def printRequiredPic(id):
-    for l in pics[idx]:
+    for l in pics[id]:
         print(l)
 	
-def askAndEvaluate(word, result, missed):
+def askAndEvaluate(word_choosen, result, missed):
 	guess = input()
-	if guess==None or len(guess)!=1 or guess in result or guess in missed:
-	    return None
+	if guess==None or len(guess)!=1 or (guess in result) or (guess in missed):
+	    return None,False
 	i=0
-	right=guess in word
-	for c in word:
+	right=guess in word_choosen
+	for c in word_choosen:
 		if c==guess:
 			result[i]=c
 		i+=1
@@ -63,9 +63,25 @@ def main():
 	missed=[]
 	success=False
 	i=0
+	printRequiredPic(i)
 	while i<len(pics)-1:
 		print('Guess The word:')
-		i+=1
-
+		guess,right = askAndEvaluate(word_choosen, result, missed)
+		if guess==None:
+			print('You have already made this choice')
+			continue
+		print()
+		print(result)
+		if result==word_choosen:
+			print('Congratulations! You have just saved a life.')
+			success=True 
+			break
+		if not right:
+			missed.append(guess)
+			i+=1
+			print('OOPS!Wrong guess {0}'.format(guess))
+			printRequiredPic(i)
+	if not success:
+		print('You are a killer!!')
 
 main()
