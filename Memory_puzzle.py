@@ -125,7 +125,12 @@ def drawIcon(shape,color,boxX,boxY):
 	elif shape==Square:
 		pygame.draw.rect(DisplaySurf,color,(left+quarter,top+quarter,BoxSize-half,BoxSize-half))
 	elif shape==Diamond:
-		pygame.draw.polygon(DisplaySurf,color,(left+half,top),)
-		
+		pygame.draw.polygon(DisplaySurf,color,((left+half,top),(left+BoxSize-1,top+half),(left+half,top+BoxSize-1),(left,top+half)))
+	elif shape==Lines:
+		for i in range(0,BoxSize,4):
+			pygame.draw.line(DisplaySurf,color,((left+i,top),(left,top+i)))
+			pygame.draw.line(DisplaySurf,color,((left+i,top+BoxSize-1),(left+BoxSize-1,top+i)))
+	elif shape==Oval:
+		pygame.draw.eclipse(DisplaySurf,color,(left,top+quarter,BoxSize,half))
 
 
