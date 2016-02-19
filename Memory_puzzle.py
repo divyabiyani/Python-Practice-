@@ -53,6 +53,7 @@ def main():
 	revealedBoxes=generateRevealedBoxesData(False)
 
 	firstSelection=None
+	startGameAnimation(mainBoard) 
 
 
 def getRandomizedBoard():
@@ -89,6 +90,10 @@ def startGameAnimation(mainBoard):
 			boxes.append((x,y))
 	random.shuffle(boxes)
 	boxIntoGroups=splitIntoGroupsOf(8,boxes)
+	drawBoard(mainBoard,coveredBoxes)
+
+	for boxgroup in boxIntoGroups:
+		revealedBoxesAnimation
 
 def splitIntoGroupsOf(size,List):
 	result=[]
@@ -104,6 +109,7 @@ def drawBoard(mainBoard,revealed):
 				pygame.draw.rect(DisplaySurf,BoxColor,(left,top,BoxSize,BoxSize))
 			else:
 				shape,color=getShapeAndColor(mainBoard,boxX,boxY)
+				drawIcon(shape,color,boxX,boxY)
 
 def leftTopCoordsOfBox(boxX,boxY):
 	left=boxX*(BoxSize+GapSize)+XMargin
@@ -132,5 +138,8 @@ def drawIcon(shape,color,boxX,boxY):
 			pygame.draw.line(DisplaySurf,color,((left+i,top+BoxSize-1),(left+BoxSize-1,top+i)))
 	elif shape==Oval:
 		pygame.draw.eclipse(DisplaySurf,color,(left,top+quarter,BoxSize,half))
+
+def revealedBoxesAnimation(board,boxesToReveal):
+	#todo	
 
 
